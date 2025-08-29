@@ -10,5 +10,4 @@ RUN apk --update add ca-certificates
 FROM scratch
 COPY --from=certs /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 COPY --from=builder /vault .
-COPY vault-server.hcl /vault-server.hcl
-ENTRYPOINT ["/vault", "server", "-config", "/vault-server.hcl"]
+ENTRYPOINT ["/vault", "server", "-config", "/etc/vault/config.hcl"]
